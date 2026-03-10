@@ -20,6 +20,20 @@ color:white;
 padding:20px;
 }
 
+.omtext{
+font-size:32px;
+color:#FFD700;
+margin-top:10px;
+font-weight:bold;
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+0%{text-shadow:0 0 5px gold,0 0 10px gold;}
+50%{text-shadow:0 0 20px orange,0 0 30px gold;}
+100%{text-shadow:0 0 5px gold,0 0 10px gold;}
+}
+
 .slider{
 width:100%;
 overflow:hidden;
@@ -95,10 +109,18 @@ opacity:0;
 
 <body>
 
+<!-- TEMPLE BELL SOUND -->
+
+<audio autoplay>
+<source src="https://www.fesliyanstudios.com/play-mp3/4384">
+</audio>
+
 <div class="header">
 <h1>Arulmigu Arangatha Naayagi Udanurai Dhiyana Atheeswarar Temple</h1>
 <h3>Pradhosham Vazhipadu Mandram</h3>
 </div>
+
+<div class="omtext">ஓம் நமசிவாய</div>
 
 <div class="slider">
 <img class="slides" src="photo1.jpg">
@@ -113,9 +135,6 @@ opacity:0;
 <img class="slides" src="photo10.jpg">
 </div>
 
-
-<!-- ஆலயம் சிறப்பு -->
-
 <div class="section">
 
 <h2>ஆலயம் சிறப்பு</h2>
@@ -129,7 +148,6 @@ opacity:0;
 
 </div>
 
-
 <div class="section">
 
 <h2>Temple Address</h2>
@@ -142,7 +160,6 @@ Madhuranthakam – 603303
 </p>
 
 </div>
-
 
 <div class="section">
 
@@ -171,7 +188,6 @@ Madhuranthakam – 603303
 
 </div>
 
-
 <div class="section">
 
 <h2>Temple Location</h2>
@@ -181,7 +197,6 @@ Open Google Map
 </a>
 
 </div>
-
 
 <div class="section">
 
@@ -194,7 +209,6 @@ Open Google Map
 <img src="phonepe.jpg" class="qr">
 
 </div>
-
 
 <script>
 
