@@ -9,13 +9,13 @@
 body{
 margin:0;
 font-family:Arial;
-background:#fbf52d;
+background:#f5f5f5;
 text-align:center;
 overflow-x:hidden;
 }
 
 .header{
-background:#4740d3;
+background:#8B0000;
 color:white;
 padding:20px;
 }
@@ -38,13 +38,32 @@ padding:20px;
 border-radius:10px;
 }
 
-button{
-background:#bfaac3;
+/* MULTI COLOR BUTTON ANIMATION */
+
+@keyframes colorChange{
+0%{background:#ff0000;}
+20%{background:#ff7b00;}
+40%{background:#ffd900;}
+60%{background:#00c853;}
+80%{background:#2979ff;}
+100%{background:#ff0000;}
+}
+
+.whatsappbtn{
 color:white;
 border:none;
 padding:8px 15px;
 border-radius:5px;
 cursor:pointer;
+animation:colorChange 6s infinite;
+}
+
+.mapbtn{
+color:white;
+padding:10px 20px;
+text-decoration:none;
+border-radius:5px;
+animation:colorChange 6s infinite;
 }
 
 .qr{
@@ -52,23 +71,13 @@ width:200px;
 margin:10px;
 }
 
-.mapbtn{
-background:#56cae9;
-color:white;
-padding:10px 20px;
-text-decoration:none;
-border-radius:5px;
-}
+/* Vel + Trisul Shower */
 
-/* Flower petals */
-
-.petal{
+.symbol{
 position:fixed;
-top:-20px;
-width:12px;
-height:12px;
-border-radius:50%;
-opacity:0.8;
+top:-30px;
+font-size:22px;
+color:gold;
 pointer-events:none;
 z-index:1;
 animation:fall linear forwards;
@@ -127,21 +136,21 @@ Madhuranthakam – 603303
 <p>
 +91 80566 63003
 <a href="https://wa.me/918056663003" target="_blank">
-<button>WhatsApp</button>
+<button class="whatsappbtn">WhatsApp</button>
 </a>
 </p>
 
 <p>
 +91 77086 06343
 <a href="https://wa.me/917708606343" target="_blank">
-<button>WhatsApp</button>
+<button class="whatsappbtn">WhatsApp</button>
 </a>
 </p>
 
 <p>
 +91 96294 56567
 <a href="https://wa.me/919629456567" target="_blank">
-<button>WhatsApp</button>
+<button class="whatsappbtn">WhatsApp</button>
 </a>
 </p>
 
@@ -197,30 +206,30 @@ setTimeout(showSlides,3000);
 
 }
 
-/* Flower Petal Shower */
+/* Vel + Trisul Shower */
 
-const colors=["#ff4d6d","#ff758f","#ff8fab","#ffd166","#ff99c8"];
+const symbols=["🔱","🗡"];
 
-function createPetal(){
+function createSymbol(){
 
-const petal=document.createElement("div");
-petal.classList.add("petal");
+const sym=document.createElement("div");
+sym.classList.add("symbol");
 
-petal.style.left=Math.random()*100+"vw";
+sym.innerText=symbols[Math.floor(Math.random()*symbols.length)];
 
-petal.style.background=colors[Math.floor(Math.random()*colors.length)];
+sym.style.left=Math.random()*100+"vw";
 
-petal.style.animationDuration=(Math.random()*3+4)+"s";
+sym.style.animationDuration=(Math.random()*3+4)+"s";
 
-document.body.appendChild(petal);
+document.body.appendChild(sym);
 
 setTimeout(()=>{
-petal.remove();
+sym.remove();
 },7000);
 
 }
 
-setInterval(createPetal,300);
+setInterval(createSymbol,350);
 
 </script>
 
