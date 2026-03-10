@@ -205,14 +205,16 @@ setTimeout(showSlides,3000);
 
 }
 
-/* SUNFLOWER SHOWER */
+/* MULTI FLOWER SHOWER */
+
+const flowers=["🌸","🌼","🌺","🌻","🌷","💮"];
 
 function createFlower(){
 
 const flower=document.createElement("div");
 flower.classList.add("flower");
 
-flower.innerText="🌻";
+flower.innerText=flowers[Math.floor(Math.random()*flowers.length)];
 
 flower.style.left=Math.random()*100+"vw";
 
@@ -227,7 +229,6 @@ flower.remove();
 }
 
 setInterval(createFlower,350);
-
 </script>
 
 </body>
