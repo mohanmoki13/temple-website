@@ -96,7 +96,7 @@ padding:20px;
 border-radius:10px;
 }
 
-/* MULTI COLOR BUTTON */
+/* MULTICOLOR BUTTON */
 
 @keyframes colorChange{
 0%{background:#ff0000;}
@@ -105,6 +105,23 @@ border-radius:10px;
 60%{background:#00c853;}
 80%{background:#2979ff;}
 100%{background:#ff0000;}
+}
+
+.whatsappbtn{
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+animation:colorChange 6s infinite;
+}
+
+.mapbtn{
+color:white;
+padding:10px 20px;
+text-decoration:none;
+border-radius:5px;
+animation:colorChange 6s infinite;
 }
 
 .prasadbtn{
@@ -116,6 +133,19 @@ cursor:pointer;
 font-size:18px;
 margin:20px;
 animation:colorChange 4s infinite;
+}
+
+.sendbtn{
+padding:10px 20px;
+border:none;
+color:white;
+border-radius:5px;
+animation:colorChange 5s infinite;
+}
+
+.qr{
+width:200px;
+margin:10px;
 }
 
 /* FORM POPUP */
@@ -139,15 +169,7 @@ padding:8px;
 margin:8px;
 }
 
-.sendbtn{
-padding:10px 20px;
-border:none;
-color:white;
-border-radius:5px;
-animation:colorChange 5s infinite;
-}
-
-/* FLOWER RAIN */
+/* FLOWERS */
 
 .flower{
 position:fixed;
@@ -195,13 +217,14 @@ opacity:0;
 <img class="slides" src="photo2.jpg.jpeg">
 <img class="slides" src="photo3.jpg.jpeg">
 <img class="slides" src="photo4.jpg.jpeg">
+<img class="slides" src="photo5.jpg.jpeg">
 
 </div>
 
 <!-- PRASADAM BUTTON -->
 
 <button class="prasadbtn" onclick="openForm()">
-Get Prasadam at Your Doorstep ₹201
+Get Prasadam at your Doorstep ₹201
 </button>
 
 <!-- FORM -->
@@ -234,6 +257,76 @@ Get Prasadam at Your Doorstep ₹201
 ஏற்படும் பிரச்சனைகள் அனைத்தும் இங்கு வேண்டுதல் வைத்தால் நிச்சயம் நிறைவேறும் என்பது
 இங்கு வரும் பக்தர்களின் தீரா நம்பிக்கையாக உள்ளது.
 </p>
+
+</div>
+
+<!-- ADDRESS -->
+
+<div class="section">
+
+<h2>Temple Address</h2>
+
+<p>
+Valluvapakkam Forest<br>
+Sathamai Route<br>
+Melavalampet<br>
+Madhuranthakam – 603303
+</p>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="section">
+
+<h2>Contact</h2>
+
+<p>
++91 80566 63003
+<a href="https://wa.me/918056663003" target="_blank">
+<button class="whatsappbtn">WhatsApp</button>
+</a>
+</p>
+
+<p>
++91 77086 06343
+<a href="https://wa.me/917708606343" target="_blank">
+<button class="whatsappbtn">WhatsApp</button>
+</a>
+</p>
+
+<p>
++91 96294 56567
+<a href="https://wa.me/919629456567" target="_blank">
+<button class="whatsappbtn">WhatsApp</button>
+</a>
+</p>
+
+</div>
+
+<!-- MAP -->
+
+<div class="section">
+
+<h2>Temple Location</h2>
+
+<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8" target="_blank">
+Open Google Map
+</a>
+
+</div>
+
+<!-- DONATION -->
+
+<div class="section">
+
+<h2>Temple Donation</h2>
+
+<h3>Google Pay</h3>
+<img src="gpay.jpg..jpeg" class="qr">
+
+<h3>PhonePe</h3>
+<img src="phonepe.jpg..jpeg" class="qr">
 
 </div>
 
@@ -281,22 +374,16 @@ setTimeout(showSlides,3000);
 
 }
 
-/* OPEN FORM */
+/* FORM */
 
 function openForm(){
-
 document.getElementById("prasadamForm").style.display="block";
-
 }
-
-/* SEND WHATSAPP */
 
 function sendWhatsApp(){
 
 let name=document.getElementById("name").value;
-
 let phone=document.getElementById("phone").value;
-
 let address=document.getElementById("address").value;
 
 let message="Prasadam Request%0AName: "+name+"%0AContact: "+phone+"%0AAddress: "+address;
@@ -305,7 +392,7 @@ window.open("https://wa.me/918056663003?text="+message,"_blank");
 
 }
 
-/* FLOWER RAIN */
+/* FLOWERS */
 
 const flowers=["🌸","🌼","🌺","🌻","🌷"];
 
