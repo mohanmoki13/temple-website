@@ -135,6 +135,19 @@ margin:20px;
 animation:colorChange 4s infinite;
 }
 
+/* AUDIO BUTTON */
+
+.audiobtn{
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+margin:10px;
+animation:colorChange 4s infinite;
+}
+
 .sendbtn{
 padding:10px 20px;
 border:none;
@@ -196,6 +209,12 @@ opacity:0;
 <source src="om.mp3" type="audio/mpeg">
 </audio>
 
+<!-- NEW AUDIO FILE -->
+
+<audio id="templeAudio">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
 <div class="curtain left"></div>
 <div class="curtain right"></div>
 
@@ -227,6 +246,12 @@ opacity:0;
 Get Prasadam at your Doorstep ₹201
 </button>
 
+<!-- AUDIO BUTTON -->
+
+<button class="audiobtn" onclick="toggleAudio()" id="audioBtn">
+▶ Play Audio
+</button>
+
 <!-- FORM -->
 
 <div class="popup" id="prasadamForm">
@@ -234,9 +259,7 @@ Get Prasadam at your Doorstep ₹201
 <h3>Prasadam Request</h3>
 
 <input type="text" id="name" placeholder="Name">
-
 <input type="text" id="phone" placeholder="Contact">
-
 <textarea id="address" placeholder="Address"></textarea>
 
 <br>
@@ -346,6 +369,27 @@ audio.play();
 
 }
 
+/* AUDIO BUTTON */
+
+function toggleAudio(){
+
+let audio=document.getElementById("templeAudio");
+let btn=document.getElementById("audioBtn");
+
+if(audio.paused){
+
+audio.play();
+btn.innerHTML="⏸ Pause Audio";
+
+}else{
+
+audio.pause();
+btn.innerHTML="▶ Play Audio";
+
+}
+
+}
+
 /* SLIDER */
 
 let slideIndex=0;
@@ -355,7 +399,6 @@ showSlides();
 function showSlides(){
 
 let i;
-
 let slides=document.getElementsByClassName("slides");
 
 for(i=0;i<slides.length;i++){
@@ -399,13 +442,11 @@ const flowers=["🌸","🌼","🌺","🌻","🌷"];
 function createFlower(){
 
 const flower=document.createElement("div");
-
 flower.classList.add("flower");
 
 flower.innerText=flowers[Math.floor(Math.random()*flowers.length)];
 
 flower.style.left=Math.random()*100+"vw";
-
 flower.style.animationDuration=(Math.random()*3+4)+"s";
 
 document.body.appendChild(flower);
