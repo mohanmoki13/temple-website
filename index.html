@@ -153,16 +153,16 @@ opacity:0;
 
 <body>
 
+<!-- OM CHANTING AUDIO -->
+
+<audio id="omchant" loop>
+<source src="om.mp3" type="audio/mpeg">
+</audio>
+
 <!-- CURTAIN -->
 
 <div class="curtain left"></div>
 <div class="curtain right"></div>
-
-<!-- TEMPLE BELL -->
-
-<audio autoplay>
-<source src="https://www.fesliyanstudios.com/play-mp3/4384">
-</audio>
 
 <!-- HEADER -->
 
@@ -173,6 +173,7 @@ opacity:0;
 
 <h1>Arulmigu Arangatha Naayagi Udanurai Dhiyana Atheeswarar Temple</h1>
 <h3>Pradhosham Vazhipadu Mandram</h3>
+
 </div>
 
 <div class="omtext">ஓம் நமசிவாய</div>
@@ -281,12 +282,18 @@ Open Google Map
 
 <script>
 
-/* CURTAIN OPEN */
+/* CURTAIN OPEN + MUSIC START */
 
 window.onload=function(){
+
 setTimeout(()=>{
 document.body.classList.add("open");
 },1000);
+
+let audio=document.getElementById("omchant");
+audio.volume=0.5;
+audio.play();
+
 }
 
 /* SLIDER */
@@ -327,7 +334,6 @@ flower.classList.add("flower");
 flower.innerText=flowers[Math.floor(Math.random()*flowers.length)];
 
 flower.style.left=Math.random()*100+"vw";
-
 flower.style.animationDuration=(Math.random()*3+4)+"s";
 
 document.body.appendChild(flower);
