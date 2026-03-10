@@ -3,7 +3,6 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Atheeswarar Temple</title>
 
 <style>
@@ -20,9 +19,10 @@ overflow-x:hidden;
 
 .navbar{
 background:#8B0000;
-padding:10px;
-position:sticky;
+padding:12px;
+position:fixed;
 top:0;
+width:100%;
 z-index:1000;
 }
 
@@ -31,30 +31,22 @@ color:white;
 margin:10px;
 text-decoration:none;
 font-weight:bold;
+cursor:pointer;
 }
 
 /* HEADER */
 
 .header{
+margin-top:60px;
 background:#8B0000;
 color:white;
 padding:20px;
-position:relative;
 }
 
-.diya{
-position:absolute;
-top:10px;
-font-size:40px;
-}
-
-.diya.left{left:20px;}
-.diya.right{right:20px;}
-
-/* OM GLOW */
+/* OM TEXT */
 
 .om{
-font-size:34px;
+font-size:32px;
 color:gold;
 animation:glow 2s infinite;
 }
@@ -64,6 +56,27 @@ animation:glow 2s infinite;
 0%{text-shadow:0 0 5px gold;}
 50%{text-shadow:0 0 20px orange;}
 100%{text-shadow:0 0 5px gold;}
+
+}
+
+/* PAGES */
+
+.page{
+
+display:none;
+padding:20px;
+animation:slide 0.6s;
+
+}
+
+#home{
+display:block;
+}
+
+@keyframes slide{
+
+from{transform:translateX(100px);opacity:0;}
+to{transform:translateX(0);opacity:1;}
 
 }
 
@@ -78,28 +91,6 @@ width:100%;
 display:none;
 }
 
-/* SECTION */
-
-.section{
-background:white;
-margin:20px;
-padding:20px;
-border-radius:10px;
-}
-
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-}
-
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
 /* BUTTONS */
 
 @keyframes colorChange{
@@ -112,17 +103,17 @@ border-radius:10px;
 
 .whatsappbtn{
 padding:8px 15px;
-color:white;
 border:none;
 border-radius:5px;
+color:white;
 animation:colorChange 6s infinite;
 }
 
 .mapbtn{
 padding:10px 20px;
 color:white;
-border-radius:5px;
 text-decoration:none;
+border-radius:5px;
 animation:colorChange 6s infinite;
 }
 
@@ -134,10 +125,10 @@ width:200px;
 
 .flower{
 position:fixed;
-top:-30px;
-font-size:20px;
-pointer-events:none;
+top:-20px;
+font-size:18px;
 animation:fall linear forwards;
+pointer-events:none;
 }
 
 @keyframes fall{
@@ -155,49 +146,50 @@ opacity:0;
 
 <body>
 
-<!-- NAVBAR -->
+<!-- OM CHANTING -->
+
+<audio autoplay loop>
+<source src="om.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MENU -->
 
 <div class="navbar">
 
-<a href="#">Home</a>
-<a href="#special">ஆலயம் சிறப்பு</a>
-<a href="#history">ஆலயம் வரலாறு</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-<a href="#donation">Donation</a>
+<a onclick="openPage('home')">Home</a>
+<a onclick="openPage('special')">ஆலயம் சிறப்பு</a>
+<a onclick="openPage('gallery')">Gallery</a>
+<a onclick="openPage('contact')">Contact</a>
+<a onclick="openPage('donation')">Donation</a>
 
 </div>
 
-<!-- HEADER -->
+<!-- HOME -->
+
+<div id="home" class="page">
 
 <div class="header">
 
-<div class="diya left">🪔</div>
-<div class="diya right">🪔</div>
-
 <h1>Arulmigu Arangatha Naayagi Udanurai Dhiyana Atheeswarar Temple</h1>
-
 <h3>Pradhosham Vazhipadu Mandram</h3>
 
 </div>
 
 <div class="om">ஓம் நமசிவாய</div>
 
-<!-- SLIDER -->
-
 <div class="slider">
 
-<img class="slides" src="photo1.jpg.jpeg">
-<img class="slides" src="photo2.jpg.jpeg">
 <img class="slides" src="photo3.jpg.jpeg">
-<img class="slides" src="photo4.jpg.jpeg">
-<img class="slides" src="photo5.jpg.jpeg">
+<img class="slides" src="photo1.jpg.jpeg">
+<img class="slides" src="photo3.jpg.jpeg">
+
+</div>
 
 </div>
 
 <!-- ஆலயம் சிறப்பு -->
 
-<div class="section" id="special">
+<div id="special" class="page">
 
 <h2>ஆலயம் சிறப்பு</h2>
 
@@ -212,42 +204,26 @@ opacity:0;
 
 </div>
 
-<!-- ஆலயம் வரலாறு -->
-
-<div class="section" id="history">
-
-<h2>ஆலயம் வரலாறு</h2>
-
-<p>
-
-இந்த ஆலயம் பல ஆண்டுகளாக பக்தர்களின் நம்பிக்கையை பெற்ற புனித தலமாக உள்ளது.
-பிரதோஷ காலங்களில் பக்தர்கள் அதிக அளவில் வந்து சிவபெருமானை வழிபடுகின்றனர்.
-
-</p>
-
-</div>
-
 <!-- GALLERY -->
 
-<div class="section" id="gallery">
+<div id="gallery" class="page">
 
 <h2>Temple Gallery</h2>
 
-<div class="gallery">
-
-<img src="photo6.jpg.jpeg">
-<img src="photo7.jpg.jpeg">
-<img src="photo8.jpg.jpeg">
-<img src="photo9.jpg.jpeg">
-<img src="photo10.jpg.jpeg">
-
-</div>
+<img src="photo1.jpg.jpeg" width="250">
+<img src="photo2.jpg.jpeg" width="250">
+<img src="photo3.jpg.jpeg" width="250">
+<img src="photo4.jpg.jpeg" width="250">
+<img src="photo5.jpg.jpeg" width="250">
+<img src="photo6.jpg.jpeg" width="250">
+<img src="photo7.jpg.jpeg" width="250">
+<img src="photo10.jpg.jpeg" width="250">
 
 </div>
 
 <!-- CONTACT -->
 
-<div class="section" id="contact">
+<div id="contact" class="page">
 
 <h2>Contact</h2>
 
@@ -287,21 +263,19 @@ opacity:0;
 
 </p>
 
-</div>
+<h3>Temple Location</h3>
 
-<!-- MAP -->
+<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8">
 
-<div class="section">
+Open Google Map
 
-<h2>Temple Location</h2>
-
-<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8">Open Map</a>
+</a>
 
 </div>
 
 <!-- DONATION -->
 
-<div class="section" id="donation">
+<div id="donation" class="page">
 
 <h2>Temple Donation</h2>
 
@@ -316,6 +290,26 @@ opacity:0;
 </div>
 
 <script>
+
+/* MENU PAGE CHANGE */
+
+function openPage(page){
+
+var i;
+
+var pages=document.getElementsByClassName("page");
+
+for(i=0;i<pages.length;i++){
+
+pages[i].style.display="none";
+
+}
+
+document.getElementById(page).style.display="block";
+
+window.scrollTo(0,0);
+
+}
 
 /* SLIDER */
 
@@ -337,11 +331,7 @@ slides[i].style.display="none";
 
 slideIndex++;
 
-if(slideIndex>slides.length){
-
-slideIndex=1;
-
-}
+if(slideIndex>slides.length){slideIndex=1;}
 
 slides[slideIndex-1].style.display="block";
 
@@ -376,5 +366,4 @@ setInterval(createFlower,400);
 </script>
 
 </body>
-
 </html>
