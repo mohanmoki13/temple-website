@@ -38,7 +38,7 @@ padding:20px;
 border-radius:10px;
 }
 
-/* MULTI COLOR BUTTON ANIMATION */
+/* MULTI COLOUR BUTTON ANIMATION */
 
 @keyframes colorChange{
 0%{background:#ff0000;}
@@ -71,13 +71,12 @@ width:200px;
 margin:10px;
 }
 
-/* Vel + Trisul Shower */
+/* SUNFLOWER SHOWER */
 
-.symbol{
+.flower{
 position:fixed;
 top:-30px;
-font-size:22px;
-color:gold;
+font-size:20px;
 pointer-events:none;
 z-index:1;
 animation:fall linear forwards;
@@ -180,7 +179,7 @@ Open Google Map
 
 <script>
 
-/* Slider */
+/* PHOTO SLIDER */
 
 let slideIndex = 0;
 showSlides();
@@ -206,30 +205,28 @@ setTimeout(showSlides,3000);
 
 }
 
-/* Vel + Trisul Shower */
+/* SUNFLOWER SHOWER */
 
-const symbols=["🔱","🗡"];
+function createFlower(){
 
-function createSymbol(){
+const flower=document.createElement("div");
+flower.classList.add("flower");
 
-const sym=document.createElement("div");
-sym.classList.add("symbol");
+flower.innerText="🌻";
 
-sym.innerText=symbols[Math.floor(Math.random()*symbols.length)];
+flower.style.left=Math.random()*100+"vw";
 
-sym.style.left=Math.random()*100+"vw";
+flower.style.animationDuration=(Math.random()*3+4)+"s";
 
-sym.style.animationDuration=(Math.random()*3+4)+"s";
-
-document.body.appendChild(sym);
+document.body.appendChild(flower);
 
 setTimeout(()=>{
-sym.remove();
+flower.remove();
 },7000);
 
 }
 
-setInterval(createSymbol,350);
+setInterval(createFlower,350);
 
 </script>
 
