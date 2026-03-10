@@ -96,7 +96,7 @@ padding:20px;
 border-radius:10px;
 }
 
-/* BUTTON COLOR CHANGE */
+/* MULTI COLOR BUTTON */
 
 @keyframes colorChange{
 0%{background:#ff0000;}
@@ -107,26 +107,44 @@ border-radius:10px;
 100%{background:#ff0000;}
 }
 
-.whatsappbtn{
+.prasadbtn{
 color:white;
 border:none;
-padding:8px 15px;
-border-radius:5px;
+padding:12px 20px;
+border-radius:8px;
 cursor:pointer;
-animation:colorChange 6s infinite;
+font-size:18px;
+margin:20px;
+animation:colorChange 4s infinite;
 }
 
-.mapbtn{
-color:white;
+/* FORM POPUP */
+
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px black;
+z-index:10000;
+}
+
+.popup input, .popup textarea{
+width:90%;
+padding:8px;
+margin:8px;
+}
+
+.sendbtn{
 padding:10px 20px;
-text-decoration:none;
+border:none;
+color:white;
 border-radius:5px;
-animation:colorChange 6s infinite;
-}
-
-.qr{
-width:200px;
-margin:10px;
+animation:colorChange 5s infinite;
 }
 
 /* FLOWER RAIN */
@@ -148,23 +166,16 @@ opacity:0;
 }
 
 </style>
-
 </head>
 
 <body>
-
-<!-- OM CHANTING AUDIO -->
 
 <audio id="omchant" loop>
 <source src="om.mp3" type="audio/mpeg">
 </audio>
 
-<!-- CURTAIN -->
-
 <div class="curtain left"></div>
 <div class="curtain right"></div>
-
-<!-- HEADER -->
 
 <div class="header">
 
@@ -178,20 +189,36 @@ opacity:0;
 
 <div class="omtext">ஓம் நமசிவாய</div>
 
-<!-- SLIDER -->
-
 <div class="slider">
 
 <img class="slides" src="photo1.jpg.jpeg">
 <img class="slides" src="photo2.jpg.jpeg">
 <img class="slides" src="photo3.jpg.jpeg">
 <img class="slides" src="photo4.jpg.jpeg">
-<img class="slides" src="photo5.jpg.jpeg">
-<img class="slides" src="photo6.jpg.jpeg">
-<img class="slides" src="photo7.jpg.jpeg">
-<img class="slides" src="photo8.jpg.jpeg">
-<img class="slides" src="photo9.jpg.jpeg">
-<img class="slides" src="photo10.jpg.jpeg">
+
+</div>
+
+<!-- PRASADAM BUTTON -->
+
+<button class="prasadbtn" onclick="openForm()">
+Get Prasadam at Your Doorstep ₹201
+</button>
+
+<!-- FORM -->
+
+<div class="popup" id="prasadamForm">
+
+<h3>Prasadam Request</h3>
+
+<input type="text" id="name" placeholder="Name">
+
+<input type="text" id="phone" placeholder="Contact">
+
+<textarea id="address" placeholder="Address"></textarea>
+
+<br>
+
+<button class="sendbtn" onclick="sendWhatsApp()">Save & Send</button>
 
 </div>
 
@@ -210,79 +237,9 @@ opacity:0;
 
 </div>
 
-<!-- ADDRESS -->
-
-<div class="section">
-
-<h2>Temple Address</h2>
-
-<p>
-Valluvapakkam Forest<br>
-Sathamai Route<br>
-Melavalampet<br>
-Madhuranthakam – 603303
-</p>
-
-</div>
-
-<!-- CONTACT -->
-
-<div class="section">
-
-<h2>Contact</h2>
-
-<p>
-+91 80566 63003
-<a href="https://wa.me/918056663003" target="_blank">
-<button class="whatsappbtn">WhatsApp</button>
-</a>
-</p>
-
-<p>
-+91 77086 06343
-<a href="https://wa.me/917708606343" target="_blank">
-<button class="whatsappbtn">WhatsApp</button>
-</a>
-</p>
-
-<p>
-+91 96294 56567
-<a href="https://wa.me/919629456567" target="_blank">
-<button class="whatsappbtn">WhatsApp</button>
-</a>
-</p>
-
-</div>
-
-<!-- MAP -->
-
-<div class="section">
-
-<h2>Temple Location</h2>
-
-<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8" target="_blank">
-Open Google Map
-</a>
-
-</div>
-
-<!-- DONATION -->
-
-<div class="section">
-
-<h2>Temple Donation</h2>
-
-<h3>Google Pay</h3>
-<img src="gpay.jpg..jpeg" class="qr">
-
-<h3>PhonePe</h3>
-<img src="phonepe.jpg..jpeg" class="qr">
-
-</div>
-
 <script>
 
-/* CURTAIN OPEN + MUSIC START */
+/* CURTAIN + MUSIC */
 
 window.onload=function(){
 
@@ -299,11 +256,13 @@ audio.play();
 /* SLIDER */
 
 let slideIndex=0;
+
 showSlides();
 
 function showSlides(){
 
 let i;
+
 let slides=document.getElementsByClassName("slides");
 
 for(i=0;i<slides.length;i++){
@@ -322,18 +281,44 @@ setTimeout(showSlides,3000);
 
 }
 
+/* OPEN FORM */
+
+function openForm(){
+
+document.getElementById("prasadamForm").style.display="block";
+
+}
+
+/* SEND WHATSAPP */
+
+function sendWhatsApp(){
+
+let name=document.getElementById("name").value;
+
+let phone=document.getElementById("phone").value;
+
+let address=document.getElementById("address").value;
+
+let message="Prasadam Request%0AName: "+name+"%0AContact: "+phone+"%0AAddress: "+address;
+
+window.open("https://wa.me/918056663003?text="+message,"_blank");
+
+}
+
 /* FLOWER RAIN */
 
-const flowers=["🌸","🌼","🌺","🌻","🌷","💮"];
+const flowers=["🌸","🌼","🌺","🌻","🌷"];
 
 function createFlower(){
 
 const flower=document.createElement("div");
+
 flower.classList.add("flower");
 
 flower.innerText=flowers[Math.floor(Math.random()*flowers.length)];
 
 flower.style.left=Math.random()*100+"vw";
+
 flower.style.animationDuration=(Math.random()*3+4)+"s";
 
 document.body.appendChild(flower);
