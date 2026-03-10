@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atheeswarar Temple</title>
 
@@ -10,108 +9,116 @@
 body{
 margin:0;
 font-family:Arial;
-background:#fff8e1;
+background:#f5f5f5;
 text-align:center;
 overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* CURTAIN */
 
-.navbar{
-background:#8B0000;
-padding:12px;
+.curtain{
 position:fixed;
 top:0;
-width:100%;
-z-index:1000;
+width:50%;
+height:100%;
+background:#8B0000;
+z-index:9999;
+transition:2s;
 }
 
-.navbar a{
-color:white;
-margin:10px;
-text-decoration:none;
-font-weight:bold;
-cursor:pointer;
-}
+.curtain.left{ left:0; }
+.curtain.right{ right:0; }
+
+.open .left{ transform:translateX(-100%); }
+.open .right{ transform:translateX(100%); }
 
 /* HEADER */
 
 .header{
-margin-top:60px;
 background:#8B0000;
 color:white;
 padding:20px;
+position:relative;
 }
 
-/* OM TEXT */
+/* DIYA */
 
-.om{
+.diya{
+position:absolute;
+top:10px;
+font-size:40px;
+animation:flicker 1.5s infinite alternate;
+}
+
+.diya.left{ left:20px; }
+.diya.right{ right:20px; }
+
+@keyframes flicker{
+0%{transform:scale(1);}
+100%{transform:scale(1.1);}
+}
+
+/* OM GLOW */
+
+.omtext{
 font-size:32px;
-color:gold;
+color:#FFD700;
+margin-top:10px;
+font-weight:bold;
 animation:glow 2s infinite;
 }
 
 @keyframes glow{
-
 0%{text-shadow:0 0 5px gold;}
-50%{text-shadow:0 0 20px orange;}
+50%{text-shadow:0 0 25px orange;}
 100%{text-shadow:0 0 5px gold;}
-
-}
-
-/* PAGES */
-
-.page{
-
-display:none;
-padding:20px;
-animation:slide 0.6s;
-
-}
-
-#home{
-display:block;
-}
-
-@keyframes slide{
-
-from{transform:translateX(100px);opacity:0;}
-to{transform:translateX(0);opacity:1;}
-
 }
 
 /* SLIDER */
 
 .slider{
 width:100%;
+overflow:hidden;
 }
 
 .slides{
 width:100%;
+height:auto;
 display:none;
 }
 
-/* BUTTONS */
+/* SECTIONS */
+
+.section{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+}
+
+/* BUTTON COLOR CHANGE */
 
 @keyframes colorChange{
-
-0%{background:red;}
-50%{background:orange;}
-100%{background:green;}
-
+0%{background:#ff0000;}
+20%{background:#ff7b00;}
+40%{background:#ffd900;}
+60%{background:#00c853;}
+80%{background:#2979ff;}
+100%{background:#ff0000;}
 }
 
 .whatsappbtn{
-padding:8px 15px;
-border:none;
-border-radius:5px;
 color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
 animation:colorChange 6s infinite;
 }
 
 .mapbtn{
-padding:10px 20px;
 color:white;
+padding:10px 20px;
 text-decoration:none;
 border-radius:5px;
 animation:colorChange 6s infinite;
@@ -119,25 +126,25 @@ animation:colorChange 6s infinite;
 
 .qr{
 width:200px;
+margin:10px;
 }
 
 /* FLOWER RAIN */
 
 .flower{
 position:fixed;
-top:-20px;
-font-size:18px;
-animation:fall linear forwards;
+top:-30px;
+font-size:20px;
 pointer-events:none;
+z-index:1;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-
 to{
-transform:translateY(110vh);
+transform:translateY(110vh) rotate(360deg);
 opacity:0;
 }
-
 }
 
 </style>
@@ -146,192 +153,161 @@ opacity:0;
 
 <body>
 
-<!-- OM CHANTING -->
+<!-- CURTAIN -->
 
-<audio autoplay loop>
-<source src="om.mp3" type="audio/mpeg">
+<div class="curtain left"></div>
+<div class="curtain right"></div>
+
+<!-- TEMPLE BELL -->
+
+<audio autoplay>
+<source src="https://www.fesliyanstudios.com/play-mp3/4384">
 </audio>
 
-<!-- MENU -->
-
-<div class="navbar">
-
-<a onclick="openPage('home')">Home</a>
-<a onclick="openPage('special')">ஆலயம் சிறப்பு</a>
-<a onclick="openPage('gallery')">Gallery</a>
-<a onclick="openPage('contact')">Contact</a>
-<a onclick="openPage('donation')">Donation</a>
-
-</div>
-
-<!-- HOME -->
-
-<div id="home" class="page">
+<!-- HEADER -->
 
 <div class="header">
 
+<div class="diya left">🪔</div>
+<div class="diya right">🪔</div>
+
 <h1>Arulmigu Arangatha Naayagi Udanurai Dhiyana Atheeswarar Temple</h1>
 <h3>Pradhosham Vazhipadu Mandram</h3>
-
 </div>
 
-<div class="om">ஓம் நமசிவாய</div>
+<div class="omtext">ஓம் நமசிவாய</div>
+
+<!-- SLIDER -->
 
 <div class="slider">
 
-<img class="slides" src="photo3.jpg.jpeg">
 <img class="slides" src="photo1.jpg.jpeg">
+<img class="slides" src="photo2.jpg.jpeg">
 <img class="slides" src="photo3.jpg.jpeg">
-
-</div>
+<img class="slides" src="photo4.jpg.jpeg">
+<img class="slides" src="photo5.jpg.jpeg">
+<img class="slides" src="photo6.jpg.jpeg">
+<img class="slides" src="photo7.jpg.jpeg">
+<img class="slides" src="photo8.jpg.jpeg">
+<img class="slides" src="photo9.jpg.jpeg">
+<img class="slides" src="photo10.jpg.jpeg">
 
 </div>
 
 <!-- ஆலயம் சிறப்பு -->
 
-<div id="special" class="page">
+<div class="section">
 
 <h2>ஆலயம் சிறப்பு</h2>
 
 <p>
-
 இந்த ஆலயத்தில் குழந்தை வரம் வேண்டி வருபவர்களுக்கு நிச்சயம் குழந்தை வரம் கிடைக்கும்.
 திருமணத் தடை, உயர்பதவி வேண்டி, உடல்நிலை குறைவு மற்றும் குடும்பத்தில் தொடர்ந்து
 ஏற்படும் பிரச்சனைகள் அனைத்தும் இங்கு வேண்டுதல் வைத்தால் நிச்சயம் நிறைவேறும் என்பது
 இங்கு வரும் பக்தர்களின் தீரா நம்பிக்கையாக உள்ளது.
-
 </p>
 
 </div>
 
-<!-- GALLERY -->
+<!-- ADDRESS -->
 
-<div id="gallery" class="page">
+<div class="section">
 
-<h2>Temple Gallery</h2>
+<h2>Temple Address</h2>
 
-<img src="photo1.jpg.jpeg" width="250">
-<img src="photo2.jpg.jpeg" width="250">
-<img src="photo3.jpg.jpeg" width="250">
-<img src="photo4.jpg.jpeg" width="250">
-<img src="photo5.jpg.jpeg" width="250">
-<img src="photo6.jpg.jpeg" width="250">
-<img src="photo7.jpg.jpeg" width="250">
-<img src="photo10.jpg.jpeg" width="250">
+<p>
+Valluvapakkam Forest<br>
+Sathamai Route<br>
+Melavalampet<br>
+Madhuranthakam – 603303
+</p>
 
 </div>
 
 <!-- CONTACT -->
 
-<div id="contact" class="page">
+<div class="section">
 
 <h2>Contact</h2>
 
 <p>
-
 +91 80566 63003
-
-<a href="https://wa.me/918056663003">
-
+<a href="https://wa.me/918056663003" target="_blank">
 <button class="whatsappbtn">WhatsApp</button>
-
 </a>
-
 </p>
 
 <p>
-
 +91 77086 06343
-
-<a href="https://wa.me/917708606343">
-
+<a href="https://wa.me/917708606343" target="_blank">
 <button class="whatsappbtn">WhatsApp</button>
-
 </a>
-
 </p>
 
 <p>
-
 +91 96294 56567
-
-<a href="https://wa.me/919629456567">
-
+<a href="https://wa.me/919629456567" target="_blank">
 <button class="whatsappbtn">WhatsApp</button>
-
 </a>
-
 </p>
 
-<h3>Temple Location</h3>
+</div>
 
-<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8">
+<!-- MAP -->
 
+<div class="section">
+
+<h2>Temple Location</h2>
+
+<a class="mapbtn" href="https://maps.app.goo.gl/wsYRLyZi3RYDUCXa8" target="_blank">
 Open Google Map
-
 </a>
 
 </div>
 
 <!-- DONATION -->
 
-<div id="donation" class="page">
+<div class="section">
 
 <h2>Temple Donation</h2>
 
 <h3>Google Pay</h3>
-
 <img src="gpay.jpg..jpeg" class="qr">
 
 <h3>PhonePe</h3>
-
 <img src="phonepe.jpg..jpeg" class="qr">
 
 </div>
 
 <script>
 
-/* MENU PAGE CHANGE */
+/* CURTAIN OPEN */
 
-function openPage(page){
-
-var i;
-
-var pages=document.getElementsByClassName("page");
-
-for(i=0;i<pages.length;i++){
-
-pages[i].style.display="none";
-
-}
-
-document.getElementById(page).style.display="block";
-
-window.scrollTo(0,0);
-
+window.onload=function(){
+setTimeout(()=>{
+document.body.classList.add("open");
+},1000);
 }
 
 /* SLIDER */
 
 let slideIndex=0;
-
 showSlides();
 
 function showSlides(){
 
 let i;
-
 let slides=document.getElementsByClassName("slides");
 
 for(i=0;i<slides.length;i++){
-
 slides[i].style.display="none";
-
 }
 
 slideIndex++;
 
-if(slideIndex>slides.length){slideIndex=1;}
+if(slideIndex>slides.length){
+slideIndex=1;
+}
 
 slides[slideIndex-1].style.display="block";
 
@@ -341,12 +317,11 @@ setTimeout(showSlides,3000);
 
 /* FLOWER RAIN */
 
-const flowers=["🌸","🌼","🌺","🌻","🌷"];
+const flowers=["🌸","🌼","🌺","🌻","🌷","💮"];
 
 function createFlower(){
 
 const flower=document.createElement("div");
-
 flower.classList.add("flower");
 
 flower.innerText=flowers[Math.floor(Math.random()*flowers.length)];
@@ -357,11 +332,11 @@ flower.style.animationDuration=(Math.random()*3+4)+"s";
 
 document.body.appendChild(flower);
 
-setTimeout(()=>{flower.remove()},7000);
+setTimeout(()=>{ flower.remove(); },7000);
 
 }
 
-setInterval(createFlower,400);
+setInterval(createFlower,350);
 
 </script>
 
